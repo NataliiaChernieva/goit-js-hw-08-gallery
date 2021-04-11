@@ -1,4 +1,5 @@
-export default [
+export default
+  const images = [
   {
     preview:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
@@ -63,3 +64,30 @@ export default [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+
+const galleryEl = document.querySelector('js-gallery');
+const cardsMarkup = createGalleryMarkup(images);
+galleryEl.insertAdjacentHTML('beforeend', cardsMarkup);
+
+function createGalleryMarkup(images) {
+  return images
+    .map(({preview,original,description}) => {
+      return `
+    <li class="gallery__item">
+  <a
+    class="gallery__link"
+    href=${original}
+  >
+    <img
+      class="gallery__image"
+      src=${preview}
+      data-source=${original}
+      alt=${description}
+    />
+  </a>
+</li>
+    `;
+    })
+    .join('');
+}
