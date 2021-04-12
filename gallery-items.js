@@ -1,4 +1,4 @@
-export default
+//export default
   const images = [
   {
     preview:
@@ -65,10 +65,12 @@ export default
   },
 ];
 
-
-const galleryEl = document.querySelector('js-gallery');
-const cardsMarkup = createGalleryMarkup(images);
-galleryEl.insertAdjacentHTML('beforeend', cardsMarkup);
+const galleryEl = document.querySelector('.js-gallery');
+const lightBox = document.querySelector('.js-lightbox');
+const lightBoxOverlay = document.querySelector('.lightbox__overlay');
+const lightBoxContent = document.querySelector('.lightbox__content');
+const lightBoxImage = document.querySelector('.lightbox__image');
+const lightBoxBtn = document.querySelector('.lightbox__button');
 
 function createGalleryMarkup(images) {
   return images
@@ -90,4 +92,39 @@ function createGalleryMarkup(images) {
     `;
     })
     .join('');
+};
+
+galleryEl.insertAdjacentHTML('beforeend', createGalleryMarkup(images));
+galleryEl.addEventListener('click', openModalWindow);
+
+function openModalWindow(e) {
+  e.preventDefault();
+  if (e.target.nodeName !== 'IMG') return;
+  lightBox.classList.add('.is-open');
+ 
+  lightBoxImage.src = e.target.dataset.source;
+  lightBoxImage.alt = e.target.alt;
+
+  addGalleryScroll();
+};
+
+function addGalleryScroll() {
+  
+}
+
+
+
+lightBoxBtn.addEventListener('click', closeModalWindow);
+// lightBoxBtn.addEventListener('keydown', closeModalWindow);
+
+function closeModalWindow(e) {
+  lightBox.classList.remove('.is-open');
+  //lightBoxBtn.removeEventListener('click', closeModalWindow);
+  // lightBoxBtn.removeEventListener('keydown', closeModalWindow);
+  lightBoxImage.src = '';
+
+}
+
+function galleryScroll(e) {
+  
 }
