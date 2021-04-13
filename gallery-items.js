@@ -108,7 +108,7 @@ function openModalWindow(e) {
   e.preventDefault();
   if (e.target.nodeName !== 'IMG') return;
 
-  lightBox.classList.add('.is-open');
+  lightBox.classList.add('is-open');
 
   images.forEach((image, ind) => {
   if (image.preview === e.target.src) {
@@ -159,7 +159,7 @@ function addGalleryScroll(e) {
 
 function onModalWindowCloseBtn(e) {
   e.preventDefault();
-  lightBox.classList.remove('.is-open');
+  lightBox.classList.remove('is-open');
   lightBoxImage.src = '';
 
   window.removeEventListener('keypress', addGalleryScroll);
