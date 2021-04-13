@@ -124,7 +124,7 @@ function openModalWindow(e) {
   window.addEventListener('keydown', addGalleryScroll);
   lightBoxBtn.addEventListener('click', onModalWindowCloseBtn);
   lightBoxOverlay.addEventListener('click', onOverlayClick);
-  window.addEventListener('keypress', onEscPress);
+  window.addEventListener('keydown', onEscPress);
 };
 
 function addGalleryScroll(e) {
@@ -158,24 +158,24 @@ function addGalleryScroll(e) {
 };
 
 function onModalWindowCloseBtn(e) {
-  e.preventDefault();
+  //e.preventDefault();
   lightBox.classList.remove('is-open');
   lightBoxImage.src = '';
 
   window.removeEventListener('keypress', addGalleryScroll);
   lightBoxOverlay.removeEventListener('click', onOverlayClick);
-  window.remnoveEventListener('keypress', onEscPress);
+  window.remnoveEventListener('keydown', onEscPress);
 };
 
 function onOverlayClick(e) {
-  e.preventDefault();
+  //e.preventDefault();
   if (e.target===e.currentTarget) {
     onModalWindowCloseBtn();
   }
 };
 
-function onEscPress() {
-  e.preventDefault();
+function onEscPress(e) {
+  //e.preventDefault();
   if (e.code === 'Escape') {
     onModalWindowCloseBtn();
   }
