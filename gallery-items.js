@@ -1,4 +1,4 @@
-//export default 
+//export default [
 const images = [
   {
     preview:
@@ -164,7 +164,7 @@ function onModalWindowCloseBtn(e) {
 
   window.removeEventListener('keypress', addGalleryScroll);
   lightBoxOverlay.removeEventListener('click', onOverlayClick);
-  window.remnoveEventListener('keydown', onEscPress);
+  window.removeEventListener('keydown', onEscPress);
 };
 
 function onOverlayClick(e) {
